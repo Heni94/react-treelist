@@ -11,9 +11,11 @@ class RowCell extends Component {
     super(props);
     this.displayName = 'RowCell';
     this.ButtonToggle = React.createRef();
+    this.state = {
+      resultInfo = false;
   }
   gradeFun () {
-    //console.log("TEST");
+    this.setState({resultInfo : true})
   }
   render() {
     const {
@@ -29,7 +31,8 @@ class RowCell extends Component {
       showExpandCollapse,
       isExpanded,
       onExpandToggle,
-      colField
+      colField,
+      resultInfo
     } = this.props;
 
     // indentation dummies
@@ -84,7 +87,7 @@ class RowCell extends Component {
           <span>
             {
               rowData.grade ? 
-              <button className="icon-View" onClick={()=> this.gradeFun()}>
+              <button className="icon-View" onClick={()=> this.setState({resultInfo : true})}>
                 <svg viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" /></svg>
               </button> 
               : null
@@ -111,11 +114,13 @@ RowCell.propTypes = {
   showExpandCollapse: PropTypes.bool,
   isExpanded: PropTypes.bool,
   onExpandToggle: PropTypes.func,
-  colField: PropTypes.string
+  colField: PropTypes.string,
+  resultInfo: PropTypes.bool
 };
 
 RowCell.defaultProps = {
   format: 'mm/dd/yyyy'
+  resultInfo: false
 };
 
 export default RowCell;
