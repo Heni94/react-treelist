@@ -11,9 +11,11 @@ class RowCell extends Component {
     super(props);
     this.displayName = 'RowCell';
     this.ButtonToggle = React.createRef();
+    this.state = {
+      resultInfo = false;
   }
   gradeFun () {
-    //console.log("TEST");
+    this.setState({resultInfo : true})
   }
   render() {
     const {
@@ -29,7 +31,8 @@ class RowCell extends Component {
       showExpandCollapse,
       isExpanded,
       onExpandToggle,
-      colField
+      colField,
+      resultInfo
     } = this.props;
 
     // indentation dummies
@@ -111,11 +114,13 @@ RowCell.propTypes = {
   showExpandCollapse: PropTypes.bool,
   isExpanded: PropTypes.bool,
   onExpandToggle: PropTypes.func,
-  colField: PropTypes.string
+  colField: PropTypes.string,
+  resultInfo: PropTypes.bool
 };
 
 RowCell.defaultProps = {
   format: 'mm/dd/yyyy'
+  resultInfo: false
 };
 
 export default RowCell;
