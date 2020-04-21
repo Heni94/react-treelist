@@ -29,7 +29,8 @@ class RowCell extends Component {
       showExpandCollapse,
       isExpanded,
       onExpandToggle,
-      colField
+      colField,
+      resultInfo
     } = this.props;
 
     // indentation dummies
